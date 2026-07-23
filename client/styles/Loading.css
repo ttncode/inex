@@ -1,0 +1,58 @@
+.loading__parent {
+  display: grid;
+  grid-column: 2;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-card {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+  width: 100%;
+  height: 280px;
+}
+
+.loading {
+  background-color: #f4f4f4;
+  animation: loadingAnimation 1s infinite;
+}
+
+.loading-placeholder {
+  background-color: #e5e5e5;
+  height: 30%;
+  width: 90%;
+  margin: 6px 0;
+  animation: loadingPlaceholder .82s infinite;
+}
+
+.loading-placeholder:first-child {
+  height: 60%;
+}
+
+
+@keyframes loadingAnimation {
+  0% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes loadingPlaceholder {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
