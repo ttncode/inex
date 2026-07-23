@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import 'tippy.js/dist/tippy.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /*----  Colors  ----*/
+  --height-header-xl: 6.25rem;
+  --height-header-lg: 5rem;
+  --height-header-sm: 3.75rem;
+
+  /*----  Colors  ----*/
+  --line-color: #e3e1e0;
+  --white-color: white;
+  --black-color: black;
+  --primary-color: #ea5823;
+  --text-color: #999997;
+  --text-nav-color: #e8e6e6;
+  --paragraph-color: #1f1f1f;
+  --border-color: #8c8273;
+  --background-color: #eceae8;
+  --login-hover-color: #bf4f27;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "roboto", serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*===========> [ Scroll Bar ] <============*/
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(133, 133, 133);
+  border-radius: 10px;
+  height: 90px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(24, 23, 23);
+}
+
+/*===========> [ Range Bar In Sidebar ] <=============*/
+
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: auto;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+  @apply bg-white;
+}
+
+/*===========> [ Check Box ] <============*/
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000;
+  background-color: white;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+
+[type="checkbox"]:checked+.checkbox-label .custom-checkbox {
+  background-color: #fff;
+  border-color: #000;
+}
+
+[type="checkbox"]:checked+.checkbox-label .custom-checkbox::before {
+  content: "\2713";
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2;
+  color: #000;
+}
+
+/*=================> [ Loader ] <=================*/
+
+.line-wobble {
+  --uib-size: 100%;
+  --uib-speed: 3s;
+  --uib-color: black;
+  --uib-line-weight: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--uib-line-weight);
+  width: var(--uib-size);
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.line-wobble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--uib-color);
+  opacity: 0.1;
+}
+
+.line-wobble::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  animation: wobble var(--uib-speed) ease-in-out infinite;
+  transform: translateX(-90%);
+  background-color: var(--uib-color);
+}
+
+/*=================> [Keyframes] <=================*/
+
+@keyframes wobble {
+
+  0%,
+  100% {
+    transform: translateX(-90%);
+  }
+
+  50% {
+    transform: translateX(90%);
+  }
+}
+
+@keyframes grow {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/*=================> [Global CSS] <=================*/
+
+#rangePrice::-webkit-slider-thumb {
+  background: var(--paragraph-color);
+}
+
+@media only screen and (min-width: 960px) {
+  #rangePrice::-webkit-slider-thumb {
+    background: var(--white-color);
+  }
+}
+
+.showEffect {
+  transform: translateX(0);
+  transition: transform 0.85s ease-in-out;
+}
+
+.hideEffect {
+  transform: translateX(100%);
+  transition: transform 0.85s ease-in-out;
+}
+
+.logo {
+  fill: white;
+  stroke: white;
+  height: 24px;
+  width: 24px;
+}
+
+.tippy-box[data-placement="bottom"] {
+  background-color: var(--paragraph-color) !important;
+  border-radius: 0px !important;
+}
+
+.tippy-content {
+  padding: 0 !important;
+}
+
+.group:hover .transition-quick {
+  height: 3rem;
+  color: black;
+}
+
+.header__cart {
+  fill: var(--primary-color);
+  stroke: var(--primary-color);
+  height: 27px;
+  width: 27px;
+}
+
+.select-active {
+  font-weight: 500;
+  opacity: 1 !important;
+}
+
+.nav-active {
+  @apply text-primary;
+}
+
+.font-roboto {
+  font-family: "Roboto";
+}
+
+.font-condensed {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/*=================> [Config default] <=================*/
+
+.transitionText {
+  @apply transition duration-300 ease-linear;
+}
+
+.flexCenter {
+  @apply flex justify-center items-center;
+}
+
+.flexBetween {
+  @apply flex justify-between items-center;
+}
+
+.flexStart {
+  @apply flex items-center justify-start;
+}
+
+.flexEnd {
+  @apply flex items-center justify-end;
+}
+
+.text-small {
+  @apply text-sm font-medium;
+}
