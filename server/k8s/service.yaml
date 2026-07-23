@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: inex-shop
+spec:
+  selector:
+    app: inex-shop
+  ports:
+    - protocol: TCP
+      port: 5000
+  type: LoadBalancer

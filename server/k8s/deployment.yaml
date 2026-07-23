@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inex-shop
+spec:
+  selector:
+    matchLabels:
+      app: inex-shop
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: inex-shop
+    spec:
+      containers:
+        - name: inex-shop
+          image: nghiakydiem/inex-shop
+          ports:
+            - containerPort: 5000
