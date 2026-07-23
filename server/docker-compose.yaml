@@ -1,0 +1,14 @@
+services:
+  index-shop:
+    image: nghiakydiem/inex-shop:1.4
+    ports:
+      - 8080:5000
+    environment:
+      PORT: 5000
+      BASE_URL: http://localhost:5000
+      CLIENT_URL: https://inex-shop.vercel.app
+      MONGO_DATABASE_URL: REDACTED
+      STRIPE_SECRET_KEY: REDACTED
+      JWT_SECRET: REDACTED
+      GOOGLE_CLIENT_ID: 32605608777-vughgals11sj3sau6vegc66torst81lt.apps.googleusercontent.com
+      GOOGLE_SECRET_KEY: REDACTED
