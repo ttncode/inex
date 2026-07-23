@@ -1,0 +1,47 @@
+services:
+  # MongoDB Database
+  mongo:
+    image: mongo:7.0
+    container_name: inex-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: inex_shop
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # NestJS Backend API
+  server:
+    build:
+      context: ./server
+    container_name: inex-server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./server/.env
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  # Next.js Frontend Client
+  client:
+    build:
+      context: ./client
+    container_name: inex-client
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./client/.env
+    depends_on:
+      - server
+
+volumes:
+  mongo_data:
