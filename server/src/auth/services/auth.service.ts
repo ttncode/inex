@@ -81,9 +81,13 @@ export class AuthService {
 
       const hash = await argon2.hash(authDto.password);
 
+      // Pick fields explicitly: spreading the body let a client set role or
+      // hashPassword and sign up as admin.
       const newUser = new this.userModel({
-        hashPassword: hash || authDto.password,
-        ...authDto,
+        username: authDto.username,
+        email: authDto.email,
+        avatar: authDto.avatar,
+        hashPassword: hash,
       });
       await newUser.save();
 

@@ -7,10 +7,10 @@ export class PusherService {
 
   constructor() {
     this.pusher = new Pusher({
-      appId: '1679021',
-      key: '1830952788320477ef7e',
-      secret: 'REDACTED',
-      cluster: 'ap1',
+      appId: process.env.PUSHER_APP_ID,
+      key: process.env.PUSHER_KEY,
+      secret: process.env.PUSHER_SECRET,
+      cluster: process.env.PUSHER_CLUSTER,
       useTLS: true,
     });
   }

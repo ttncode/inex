@@ -11,7 +11,5 @@ export class AuthRegisterDto {
   @IsNotEmpty()
   password: string;
 
-  role?: string;
   avatar?: string;
-  VIP?: boolean;
 }
